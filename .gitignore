@@ -1,0 +1,8 @@
+# Temporary files
+temp/
+tmp/
+*.lck
+*.tmp
+*.pid
+*.swp
+

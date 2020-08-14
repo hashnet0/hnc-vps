@@ -1,0 +1,13 @@
+# Git files
+.git/
+.gitignore
+*.gitkeep
+
+# Project files
+LICENSE
+README.md
+settings.sh
+build.sh
+test.sh
+deploy.sh
+

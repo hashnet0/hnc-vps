@@ -1,0 +1,22 @@
+#!/bin/bash
+upSeconds="$(/usr/bin/cut -d. -f1 /proc/uptime)"
+secs=$((${upSeconds}%60))
+mins=$((${upSeconds}/60%60))
+hours=$((${upSeconds}/3600%24))
+days=$((${upSeconds}/86400))
+UPTIME=$(printf "%d days, %02dh %02dm %02ds" "$days" "$hours" "$mins" "$secs")
+
+# Get the load avgs
+read one five fifteen rest < /proc/loadavg
+
+echo -e "
+Hello `whoami`, today is `date +"%A, %e %B %Y, %r"`
+`hostname` `uname -srmo`
+             
+    #  #   $(tput setaf 6)Uptime.............: $(tput bold)$(tput setaf 6)${UPTIME}$(tput sgr0)
+ ########  $(tput setaf 6)Memory.............: $(tput bold)$(tput setaf 6)$(cat /proc/meminfo | grep MemAvailable | awk {'print $2'}) Kb (Free) $(tput sgr0)$(tput setaf 6)/$(tput sgr0) $(tput bold)$(tput setaf 6)$(cat /proc/meminfo | grep MemTotal | awk {'print $2'}) Kb (Total)$(tput sgr0)
+   #  #    $(tput setaf 6)Load Averages......: $(tput bold)$(tput setaf 6)${one}, ${five}, ${fifteen} $(tput sgr0)$(tput setaf 6)(1m, 5m, 15m)$(tput sgr0)
+ ########  $(tput setaf 6)Running Processes..: $(tput bold)$(tput setaf 6)$(ps -aux | wc -l | tr -d " ")$(tput sgr0)
+  #  #     $(tput setaf 6)IP Addresses.......: $(tput bold)$(tput setaf 6)$(ip a | grep glo | awk '{print $2}' | head -1 | cut -f1 -d/)$(tput sgr0)
+"
+
