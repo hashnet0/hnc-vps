@@ -14,5 +14,5 @@ Run the `build.sh` file to generate the Docker image `hnc-vps`.
 
 To spawn a temporary container run `test.sh`.
 
-To spawn a dedicated container run `run.sh`.
+To spawn a dedicated container run `deploy.sh`.
 
