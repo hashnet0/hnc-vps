@@ -7,5 +7,9 @@ cd $DIR
 source ./settings.sh
 
 docker rmi ${IMAGE_NAME}
-docker build --force-rm --rm --tag ${IMAGE_NAME} .
+docker build \
+	--build-arg PASSWORD=${PASSWORD} \
+	--force-rm \
+	--rm \
+	--tag ${IMAGE_NAME} .
 

@@ -3,6 +3,8 @@ LABEL name="hnc-vps"
 LABEL description="HashNet Container for enterprise VPS users"
 LABEL maintainer="hashsploit <hashsploit@protonmail.com>"
 
+ARG PASSWORD=password
+
 # Install dependencies
 RUN echo "Updating system ..." \
 	&& apt-get update >/dev/null 2>&1 \
@@ -17,6 +19,12 @@ RUN echo "Updating system ..." \
 
 # Copy file system
 COPY fs/ /
+
+# Set password
+RUN echo "root:${PASSWORD}" | chpasswd
+
+# Make entrypoint executable
+RUN chmod +x /srv/entrypoint.sh
 
 # Expose service
 EXPOSE 22

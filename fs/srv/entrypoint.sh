@@ -1,4 +1,3 @@
 #!/bin/bash
 
-/usr/sbin/sshd -D
-
+exec /usr/sbin/sshd -D

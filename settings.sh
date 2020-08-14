@@ -6,7 +6,11 @@ IMAGE_NAME="hnc-vps:latest"
 # The container's name when using ./deploy.sh and ./test.sh
 CONTAINER_NAME="hnc-vps"
 
+# Hostname of the server
 HOSTNAME="hnc-vps"
+
+# Password for root user
+PASSWORD="root"
 
 # Number of CPU's allowed to be used in this container
 CPUS="8"

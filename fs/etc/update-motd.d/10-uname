@@ -1,4 +1,5 @@
 #!/bin/bash
+TERM="xterm-256color"
 upSeconds="$(/usr/bin/cut -d. -f1 /proc/uptime)"
 secs=$((${upSeconds}%60))
 mins=$((${upSeconds}/60%60))
@@ -10,7 +11,7 @@ UPTIME=$(printf "%d days, %02dh %02dm %02ds" "$days" "$hours" "$mins" "$secs")
 read one five fifteen rest < /proc/loadavg
 
 echo -e "
-Hello `whoami`, today is `date +"%A, %e %B %Y, %r"`
+Hello `whoami`, it is `date +"%A, %B %e, %Y at %r"`
 `hostname` `uname -srmo`
              
     #  #   $(tput setaf 6)Uptime.............: $(tput bold)$(tput setaf 6)${UPTIME}$(tput sgr0)
