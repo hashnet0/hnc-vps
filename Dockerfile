@@ -22,4 +22,4 @@ COPY fs/ /
 EXPOSE 22
 
 # Set image starting point
-CMD ["/bin/bash"]
+CMD ["bash", "/srv/entrypoint.sh"]

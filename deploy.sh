@@ -9,11 +9,11 @@ source ./settings.sh
 docker run -d -i -t \
 	-h ${HOSTNAME} \
 	-e CONTAINER_NAME=${CONTAINER_NAME} \
-	-e MEMORY_MAX=${MEMORY_MAX} \
+	--cpus=${CPUS} \
 	--memory=${MEMORY_MAX} \
 	--memory-swap=${MEMORY_MAX} \
 	--memory-swappiness=0 \
 	--name ${CONTAINER_NAME} \
 	--mount "type=volume,src=${VOLUME_NAME},dst=/,volume-driver=local" \
-	-p ${PORT}:22 \
+	-p ${SSH_PORT}:22 \
 	${IMAGE_NAME}
