@@ -12,7 +12,7 @@ HOSTNAME="hnc-vps"
 # Username of the new user
 USERNAME="user"
 
-# Password for root user
+# Password of the new user
 PASSWORD="password"
 
 # Number of CPU's allowed to be used in this container
