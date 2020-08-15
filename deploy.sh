@@ -14,7 +14,7 @@ docker run -d -i -t \
 	--memory-swap=${MEMORY_MAX} \
 	--memory-swappiness=0 \
 	--name ${CONTAINER_NAME} \
-	--mount "type=volume,src=${VOLUME_NAME},dst=/srv,volume-driver=local" \
+	--mount "type=volume,src=${VOLUME_NAME},dst=/home,volume-driver=local" \
 	--restart unless-stopped \
 	--network host \
 	${IMAGE_NAME}
