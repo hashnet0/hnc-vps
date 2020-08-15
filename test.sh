@@ -13,5 +13,6 @@ docker run --rm -i -t \
 	--memory=${MEMORY_MAX} \
 	--memory-swap=${MEMORY_MAX} \
 	--memory-swappiness="0" \
+	--network host \
 	${IMAGE_NAME} bash
 

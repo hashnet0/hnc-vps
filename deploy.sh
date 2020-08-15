@@ -16,4 +16,5 @@ docker run -d -i -t \
 	--name ${CONTAINER_NAME} \
 	--mount "type=volume,src=${VOLUME_NAME},dst=/srv,volume-driver=local" \
 	--restart unless-stopped \
+	--network host \
 	${IMAGE_NAME}
