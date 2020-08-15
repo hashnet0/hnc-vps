@@ -13,6 +13,5 @@ docker run --rm -i -t \
 	--memory=${MEMORY_MAX} \
 	--memory-swap=${MEMORY_MAX} \
 	--memory-swappiness="0" \
-	-p ${SSH_PORT}:22 \
 	${IMAGE_NAME} bash
 

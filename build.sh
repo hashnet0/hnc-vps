@@ -8,7 +8,9 @@ source ./settings.sh
 
 docker rmi ${IMAGE_NAME}
 docker build \
+	--build-arg USERNAME=${USERNAME} \
 	--build-arg PASSWORD=${PASSWORD} \
+	--build-arg SSH_PORT=${SSH_PORT} \
 	--force-rm \
 	--rm \
 	--tag ${IMAGE_NAME} .

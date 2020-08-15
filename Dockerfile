@@ -3,7 +3,9 @@ LABEL name="hnc-vps"
 LABEL description="HashNet Container for enterprise VPS users"
 LABEL maintainer="hashsploit <hashsploit@protonmail.com>"
 
+ARG USERNAME=user
 ARG PASSWORD=password
+ARG SSH_PORT=2222
 
 # Install dependencies
 RUN echo "Updating system ..." \
@@ -20,14 +22,14 @@ RUN echo "Updating system ..." \
 # Copy file system
 COPY fs/ /
 
-# Set password
-RUN echo "root:${PASSWORD}" | chpasswd
+# Create user, set new user's password, configure sshd port, add user to sudo group.
+RUN useradd --create-home --shell /bin/bash ${USERNAME} \
+	&& echo "${USERNAME}:${PASSWORD}" | chpasswd \
+	&& sed -i "s/Port 22/Port ${SSH_PORT}/g" /etc/ssh/sshd_config \
+	&& usermod -aG sudo ${USERNAME}
 
 # Make entrypoint executable
 RUN chmod +x /srv/entrypoint.sh
-
-# Expose service
-EXPOSE 22
 
 # Set image starting point
 CMD ["bash", "/srv/entrypoint.sh"]

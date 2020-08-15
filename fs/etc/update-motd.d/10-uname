@@ -11,7 +11,7 @@ UPTIME=$(printf "%d days, %02dh %02dm %02ds" "$days" "$hours" "$mins" "$secs")
 read one five fifteen rest < /proc/loadavg
 
 echo -e "
-Hello `whoami`, it is `date +"%A, %B %e, %Y at %r"`
+`date +"%A, %B %e, %Y %r"`
 `hostname` `uname -srmo`
              
     #  #   $(tput setaf 6)Uptime.............: $(tput bold)$(tput setaf 6)${UPTIME}$(tput sgr0)
